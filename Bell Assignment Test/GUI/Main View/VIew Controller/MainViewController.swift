@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class MainViewController: BaseViewController {
     
@@ -18,6 +19,8 @@ class MainViewController: BaseViewController {
     
     // MARK:- Properties
     private let viewModel: MainVM
+    private var diffableDatasource: UITableViewDiffableDataSource<Section, VehicleCellModel>!
+    private var subscriptions = Set<AnyCancellable>()
     
     // MARK:- init
     init(viewModel: MainViewModel) {
@@ -33,7 +36,11 @@ class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        tableView.regularSetup()
+        configureTableView()
+        addSubscriptions()
         fetchCarList()
+        tableView.tableFooterView = UIView()
     }
     
     // MARK:- Private Methods
@@ -47,8 +54,25 @@ class MainViewController: BaseViewController {
         ])
     }
     
+    private func configureTableView() {
+        viewModel.cellIdentifiers.forEach { (cellId) in
+            tableView.register(cellId, forCellReuseIdentifier: "\(cellId)")
+        }
+        diffableDatasource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { (tv, indexPath, result) -> UITableViewCell? in
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: result.identifier)
+            return cell
+        })
+    }
+    
+    private func addSubscriptions() {
+        viewModel.snapshotPublisher
+            .sink { [unowned self] (snapshot) in
+                self.diffableDatasource.apply(snapshot, animatingDifferences: true)
+            }
+            .store(in: &subscriptions)
+    }
+    
     private func fetchCarList() {
         viewModel.fetchCarListData()
     }
-    
 }

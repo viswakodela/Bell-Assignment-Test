@@ -12,6 +12,9 @@
 		BD1A6DDC263A08E300BBA994 /* StarterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A6DDB263A08E300BBA994 /* StarterFactory.swift */; };
 		BD1A6E87263A0CBB00BBA994 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD1A6E86263A0CBB00BBA994 /* Assets.xcassets */; };
 		BD1A6E8D263A136B00BBA994 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD1A6E8C263A136B00BBA994 /* Colors.xcassets */; };
+		BD1A6E92263A159A00BBA994 /* TableViewCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A6E91263A159A00BBA994 /* TableViewCellProtocol.swift */; };
+		BD1A6E9A263A15E200BBA994 /* VehicleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A6E99263A15E200BBA994 /* VehicleTableViewCell.swift */; };
+		BD1A6E9D263A164D00BBA994 /* VehicleCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A6E9C263A164D00BBA994 /* VehicleCellModel.swift */; };
 		BD2987952639F50300FC1D11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2987942639F50300FC1D11 /* AppDelegate.swift */; };
 		BD2987972639F50300FC1D11 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2987962639F50300FC1D11 /* SceneDelegate.swift */; };
 		BD29879C2639F50300FC1D11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD29879A2639F50300FC1D11 /* Main.storyboard */; };
@@ -28,6 +31,7 @@
 		BD2987DD2639FAB000FC1D11 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2987DC2639FAB000FC1D11 /* Vehicle.swift */; };
 		BD2987E12639FCDB00FC1D11 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2987E02639FCDB00FC1D11 /* MainViewModel.swift */; };
 		BD2987E52639FD3300FC1D11 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2987E42639FD3300FC1D11 /* AppError.swift */; };
+		BD7C47BF263A1AA3009D6422 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C47BE263A1AA3009D6422 /* UITableView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,9 @@
 		BD1A6DDB263A08E300BBA994 /* StarterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterFactory.swift; sourceTree = "<group>"; };
 		BD1A6E86263A0CBB00BBA994 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD1A6E8C263A136B00BBA994 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		BD1A6E91263A159A00BBA994 /* TableViewCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellProtocol.swift; sourceTree = "<group>"; };
+		BD1A6E99263A15E200BBA994 /* VehicleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTableViewCell.swift; sourceTree = "<group>"; };
+		BD1A6E9C263A164D00BBA994 /* VehicleCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleCellModel.swift; sourceTree = "<group>"; };
 		BD2987912639F50300FC1D11 /* Bell Assignment Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bell Assignment Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD2987942639F50300FC1D11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD2987962639F50300FC1D11 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +61,7 @@
 		BD2987DC2639FAB000FC1D11 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		BD2987E02639FCDB00FC1D11 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		BD2987E42639FD3300FC1D11 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		BD7C47BE263A1AA3009D6422 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +82,31 @@
 				BD1A6DDB263A08E300BBA994 /* StarterFactory.swift */,
 			);
 			path = Starter;
+			sourceTree = "<group>";
+		};
+		BD1A6E8F263A158200BBA994 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				BD2987B62639F5C500FC1D11 /* BaseViewController.swift */,
+				BD2987D22639F76200FC1D11 /* BellNavigationController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		BD1A6E90263A158800BBA994 /* TableViewCellProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				BD1A6E91263A159A00BBA994 /* TableViewCellProtocol.swift */,
+			);
+			path = TableViewCellProtocol;
+			sourceTree = "<group>";
+		};
+		BD1A6E98263A15D500BBA994 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BD1A6E99263A15E200BBA994 /* VehicleTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		BD2987882639F50300FC1D11 = {
@@ -132,6 +165,7 @@
 		BD2987B02639F57F00FC1D11 /* Main View */ = {
 			isa = PBXGroup;
 			children = (
+				BD1A6E98263A15D500BBA994 /* Cells */,
 				BD2987DF2639FCCD00FC1D11 /* ViewModel */,
 				BD2987DB2639FA9A00FC1D11 /* Model */,
 				BD2987B12639F58F00FC1D11 /* VIew Controller */,
@@ -150,8 +184,8 @@
 		BD2987B52639F5B900FC1D11 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				BD2987B62639F5C500FC1D11 /* BaseViewController.swift */,
-				BD2987D22639F76200FC1D11 /* BellNavigationController.swift */,
+				BD1A6E8F263A158200BBA994 /* Base */,
+				BD1A6E90263A158800BBA994 /* TableViewCellProtocol */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -180,6 +214,7 @@
 			children = (
 				BD2987D62639F86600FC1D11 /* Bundle+Extension.swift */,
 				BD1A6DD7263A086500BBA994 /* UIColor+Extension.swift */,
+				BD7C47BE263A1AA3009D6422 /* UITableView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -196,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				BD2987E02639FCDB00FC1D11 /* MainViewModel.swift */,
+				BD1A6E9C263A164D00BBA994 /* VehicleCellModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -285,11 +321,15 @@
 			files = (
 				BD2987DD2639FAB000FC1D11 /* Vehicle.swift in Sources */,
 				BD1A6DD8263A086500BBA994 /* UIColor+Extension.swift in Sources */,
+				BD1A6E9D263A164D00BBA994 /* VehicleCellModel.swift in Sources */,
 				BD2987D32639F76200FC1D11 /* BellNavigationController.swift in Sources */,
 				BD2987E52639FD3300FC1D11 /* AppError.swift in Sources */,
 				BD2987D72639F86600FC1D11 /* Bundle+Extension.swift in Sources */,
+				BD7C47BF263A1AA3009D6422 /* UITableView+Extension.swift in Sources */,
 				BD2987B72639F5C500FC1D11 /* BaseViewController.swift in Sources */,
+				BD1A6E9A263A15E200BBA994 /* VehicleTableViewCell.swift in Sources */,
 				BD1A6DD5263A078B00BBA994 /* StarterProtocol.swift in Sources */,
+				BD1A6E92263A159A00BBA994 /* TableViewCellProtocol.swift in Sources */,
 				BD29879F2639F50300FC1D11 /* Bell_Assignment_Test.xcdatamodeld in Sources */,
 				BD1A6DDC263A08E300BBA994 /* StarterFactory.swift in Sources */,
 				BD2987952639F50300FC1D11 /* AppDelegate.swift in Sources */,

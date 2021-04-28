@@ -6,25 +6,45 @@
 //
 
 import Combine
-import Foundation
+import UIKit
 
 protocol MainVM {
+    var snapshotPublisher: AnyPublisher<NSDiffableDataSourceSnapshot<Section, VehicleCellModel>, Never> { get }
+    var cellIdentifiers: [AnyObject.Type] { get }
     func fetchCarListData()
 }
 
 
 class MainViewModel: MainVM {
     
-    @Published private var carItems = PassthroughSubject<[Vehicle], AppError>()
+    @Published
+    private var carItems = [Vehicle]()
+    var cellIdentifiers: [AnyObject.Type] {
+        [VehicleTableViewCell.self]
+    }
     
     func fetchCarListData() {
         Bundle.main.carListData { (result) in
             switch result {
-            case .failure(let error):
-                carItems.send(completion: .failure(error))
+            case .failure:
+                carItems = []
             case .success(let vehicles):
-                carItems.send(vehicles)
+                carItems = vehicles
             }
         }
+    }
+    
+    var snapshotPublisher: AnyPublisher<NSDiffableDataSourceSnapshot<Section, VehicleCellModel>, Never> {
+        $carItems
+            .receive(on: DispatchQueue.main)
+            .map { results in
+                var snapshot = NSDiffableDataSourceSnapshot<Section, VehicleCellModel>()
+                snapshot.appendSections([.vehicles])
+                snapshot.appendItems(results.map({ (vehile) in
+                    return VehicleCellModel(vehicle: vehile)
+                }))
+                return snapshot
+            }
+            .eraseToAnyPublisher()
     }
 }

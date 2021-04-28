@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 
-struct Vehicle: Decodable {
+enum Section: Int {
+    case vehicles
+}
+
+struct Vehicle: Decodable, Hashable {
     let customerPrice: Int
     let make: String
     let marketPrice: Int
