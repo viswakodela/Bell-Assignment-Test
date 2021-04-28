@@ -26,6 +26,9 @@
 		BD2987CD2639F66200FC1D11 /* Tacoma.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD2987C42639F66200FC1D11 /* Tacoma.jpg */; };
 		BD2987D32639F76200FC1D11 /* BellNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2987D22639F76200FC1D11 /* BellNavigationController.swift */; };
 		BD2987D72639F86600FC1D11 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2987D62639F86600FC1D11 /* Bundle+Extension.swift */; };
+		BD2987DD2639FAB000FC1D11 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2987DC2639FAB000FC1D11 /* Vehicle.swift */; };
+		BD2987E12639FCDB00FC1D11 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2987E02639FCDB00FC1D11 /* MainViewModel.swift */; };
+		BD2987E52639FD3300FC1D11 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2987E42639FD3300FC1D11 /* AppError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		BD2987C42639F66200FC1D11 /* Tacoma.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Tacoma.jpg; sourceTree = "<group>"; };
 		BD2987D22639F76200FC1D11 /* BellNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BellNavigationController.swift; sourceTree = "<group>"; };
 		BD2987D62639F86600FC1D11 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		BD2987DC2639FAB000FC1D11 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		BD2987E02639FCDB00FC1D11 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		BD2987E42639FD3300FC1D11 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,7 @@
 		BD2987AF2639F57200FC1D11 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				BD2987E32639FD2800FC1D11 /* App Error */,
 				BD2987B52639F5B900FC1D11 /* Shared */,
 				BD2987B02639F57F00FC1D11 /* Main View */,
 			);
@@ -116,6 +123,8 @@
 		BD2987B02639F57F00FC1D11 /* Main View */ = {
 			isa = PBXGroup;
 			children = (
+				BD2987DF2639FCCD00FC1D11 /* ViewModel */,
+				BD2987DB2639FA9A00FC1D11 /* Model */,
 				BD2987B12639F58F00FC1D11 /* VIew Controller */,
 			);
 			path = "Main View";
@@ -168,6 +177,30 @@
 				BD2987D62639F86600FC1D11 /* Bundle+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		BD2987DB2639FA9A00FC1D11 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BD2987DC2639FAB000FC1D11 /* Vehicle.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BD2987DF2639FCCD00FC1D11 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BD2987E02639FCDB00FC1D11 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BD2987E32639FD2800FC1D11 /* App Error */ = {
+			isa = PBXGroup;
+			children = (
+				BD2987E42639FD3300FC1D11 /* AppError.swift */,
+			);
+			path = "App Error";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,13 +282,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD2987DD2639FAB000FC1D11 /* Vehicle.swift in Sources */,
 				BD2987D32639F76200FC1D11 /* BellNavigationController.swift in Sources */,
+				BD2987E52639FD3300FC1D11 /* AppError.swift in Sources */,
 				BD2987D72639F86600FC1D11 /* Bundle+Extension.swift in Sources */,
 				BD2987B72639F5C500FC1D11 /* BaseViewController.swift in Sources */,
 				BD29879F2639F50300FC1D11 /* Bell_Assignment_Test.xcdatamodeld in Sources */,
 				BD2987952639F50300FC1D11 /* AppDelegate.swift in Sources */,
 				BD2987972639F50300FC1D11 /* SceneDelegate.swift in Sources */,
 				BD2987B32639F59F00FC1D11 /* MainViewController.swift in Sources */,
+				BD2987E12639FCDB00FC1D11 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
