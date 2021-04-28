@@ -9,6 +9,13 @@ import UIKit
 
 class MainViewController: BaseViewController {
     
+    // MARK:- Layout Objects
+    private let tableView: UITableView = {
+        let tv = UITableView(frame: .zero, style: .plain)
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        return tv
+    }()
+    
     // MARK:- Properties
     private let viewModel: MainVM
     
@@ -25,10 +32,21 @@ class MainViewController: BaseViewController {
     // MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         fetchCarList()
     }
     
     // MARK:- Private Methods
+    private func setupTableView() {
+        view.addSubview(tableView)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+    
     private func fetchCarList() {
         viewModel.fetchCarListData()
     }

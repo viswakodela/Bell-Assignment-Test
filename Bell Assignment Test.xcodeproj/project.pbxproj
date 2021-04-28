@@ -7,23 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD1A6DD5263A078B00BBA994 /* StarterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A6DD4263A078B00BBA994 /* StarterProtocol.swift */; };
+		BD1A6DD8263A086500BBA994 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A6DD7263A086500BBA994 /* UIColor+Extension.swift */; };
+		BD1A6DDC263A08E300BBA994 /* StarterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A6DDB263A08E300BBA994 /* StarterFactory.swift */; };
+		BD1A6E87263A0CBB00BBA994 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD1A6E86263A0CBB00BBA994 /* Assets.xcassets */; };
+		BD1A6E8D263A136B00BBA994 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD1A6E8C263A136B00BBA994 /* Colors.xcassets */; };
 		BD2987952639F50300FC1D11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2987942639F50300FC1D11 /* AppDelegate.swift */; };
 		BD2987972639F50300FC1D11 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2987962639F50300FC1D11 /* SceneDelegate.swift */; };
 		BD29879C2639F50300FC1D11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD29879A2639F50300FC1D11 /* Main.storyboard */; };
 		BD29879F2639F50300FC1D11 /* Bell_Assignment_Test.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BD29879D2639F50300FC1D11 /* Bell_Assignment_Test.xcdatamodeld */; };
-		BD2987A12639F50600FC1D11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD2987A02639F50600FC1D11 /* Assets.xcassets */; };
 		BD2987A42639F50600FC1D11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD2987A22639F50600FC1D11 /* LaunchScreen.storyboard */; };
 		BD2987B32639F59F00FC1D11 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2987B22639F59F00FC1D11 /* MainViewController.swift */; };
 		BD2987B72639F5C500FC1D11 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2987B62639F5C500FC1D11 /* BaseViewController.swift */; };
 		BD2987C52639F66200FC1D11 /* Code couleur.pdf in Resources */ = {isa = PBXBuildFile; fileRef = BD2987BC2639F66200FC1D11 /* Code couleur.pdf */; };
-		BD2987C62639F66200FC1D11 /* Alpine_roadster.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD2987BD2639F66200FC1D11 /* Alpine_roadster.jpg */; };
-		BD2987C72639F66200FC1D11 /* Range_Rover.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD2987BE2639F66200FC1D11 /* Range_Rover.jpg */; };
 		BD2987C82639F66200FC1D11 /* Guidomia.png in Resources */ = {isa = PBXBuildFile; fileRef = BD2987BF2639F66200FC1D11 /* Guidomia.png */; };
-		BD2987C92639F66200FC1D11 /* BMW_330i.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD2987C02639F66200FC1D11 /* BMW_330i.jpg */; };
-		BD2987CA2639F66200FC1D11 /* Mercedez_benz_GLC.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD2987C12639F66200FC1D11 /* Mercedez_benz_GLC.jpg */; };
 		BD2987CB2639F66200FC1D11 /* car_list.json in Resources */ = {isa = PBXBuildFile; fileRef = BD2987C22639F66200FC1D11 /* car_list.json */; };
 		BD2987CC2639F66200FC1D11 /* Mobile Practical Test 2021_2.pages in Resources */ = {isa = PBXBuildFile; fileRef = BD2987C32639F66200FC1D11 /* Mobile Practical Test 2021_2.pages */; };
-		BD2987CD2639F66200FC1D11 /* Tacoma.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD2987C42639F66200FC1D11 /* Tacoma.jpg */; };
 		BD2987D32639F76200FC1D11 /* BellNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2987D22639F76200FC1D11 /* BellNavigationController.swift */; };
 		BD2987D72639F86600FC1D11 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2987D62639F86600FC1D11 /* Bundle+Extension.swift */; };
 		BD2987DD2639FAB000FC1D11 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2987DC2639FAB000FC1D11 /* Vehicle.swift */; };
@@ -32,25 +31,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD1A6DD4263A078B00BBA994 /* StarterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterProtocol.swift; sourceTree = "<group>"; };
+		BD1A6DD7263A086500BBA994 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		BD1A6DDB263A08E300BBA994 /* StarterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterFactory.swift; sourceTree = "<group>"; };
+		BD1A6E86263A0CBB00BBA994 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BD1A6E8C263A136B00BBA994 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		BD2987912639F50300FC1D11 /* Bell Assignment Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bell Assignment Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD2987942639F50300FC1D11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD2987962639F50300FC1D11 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BD29879B2639F50300FC1D11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BD29879E2639F50300FC1D11 /* Bell_Assignment_Test.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bell_Assignment_Test.xcdatamodel; sourceTree = "<group>"; };
-		BD2987A02639F50600FC1D11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD2987A32639F50600FC1D11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD2987A52639F50600FC1D11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD2987B22639F59F00FC1D11 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BD2987B62639F5C500FC1D11 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BD2987BC2639F66200FC1D11 /* Code couleur.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Code couleur.pdf"; sourceTree = "<group>"; };
-		BD2987BD2639F66200FC1D11 /* Alpine_roadster.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Alpine_roadster.jpg; sourceTree = "<group>"; };
-		BD2987BE2639F66200FC1D11 /* Range_Rover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Range_Rover.jpg; sourceTree = "<group>"; };
 		BD2987BF2639F66200FC1D11 /* Guidomia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Guidomia.png; sourceTree = "<group>"; };
-		BD2987C02639F66200FC1D11 /* BMW_330i.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BMW_330i.jpg; sourceTree = "<group>"; };
-		BD2987C12639F66200FC1D11 /* Mercedez_benz_GLC.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mercedez_benz_GLC.jpg; sourceTree = "<group>"; };
 		BD2987C22639F66200FC1D11 /* car_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = car_list.json; sourceTree = "<group>"; };
 		BD2987C32639F66200FC1D11 /* Mobile Practical Test 2021_2.pages */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mobile Practical Test 2021_2.pages"; sourceTree = "<group>"; };
-		BD2987C42639F66200FC1D11 /* Tacoma.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Tacoma.jpg; sourceTree = "<group>"; };
 		BD2987D22639F76200FC1D11 /* BellNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BellNavigationController.swift; sourceTree = "<group>"; };
 		BD2987D62639F86600FC1D11 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		BD2987DC2639FAB000FC1D11 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
@@ -69,6 +67,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD1A6DD3263A077A00BBA994 /* Starter */ = {
+			isa = PBXGroup;
+			children = (
+				BD1A6DD4263A078B00BBA994 /* StarterProtocol.swift */,
+				BD1A6DDB263A08E300BBA994 /* StarterFactory.swift */,
+			);
+			path = Starter;
+			sourceTree = "<group>";
+		};
 		BD2987882639F50300FC1D11 = {
 			isa = PBXGroup;
 			children = (
@@ -93,10 +100,11 @@
 				BD2987B92639F62000FC1D11 /* Core */,
 				BD2987D52639F84900FC1D11 /* Extension */,
 				BD29879A2639F50300FC1D11 /* Main.storyboard */,
-				BD2987A02639F50600FC1D11 /* Assets.xcassets */,
 				BD2987A22639F50600FC1D11 /* LaunchScreen.storyboard */,
 				BD2987A52639F50600FC1D11 /* Info.plist */,
 				BD29879D2639F50300FC1D11 /* Bell_Assignment_Test.xcdatamodeld */,
+				BD1A6E86263A0CBB00BBA994 /* Assets.xcassets */,
+				BD1A6E8C263A136B00BBA994 /* Colors.xcassets */,
 			);
 			path = "Bell Assignment Test";
 			sourceTree = "<group>";
@@ -113,6 +121,7 @@
 		BD2987AF2639F57200FC1D11 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				BD1A6DD3263A077A00BBA994 /* Starter */,
 				BD2987E32639FD2800FC1D11 /* App Error */,
 				BD2987B52639F5B900FC1D11 /* Shared */,
 				BD2987B02639F57F00FC1D11 /* Main View */,
@@ -159,14 +168,9 @@
 			isa = PBXGroup;
 			children = (
 				BD2987BC2639F66200FC1D11 /* Code couleur.pdf */,
-				BD2987BD2639F66200FC1D11 /* Alpine_roadster.jpg */,
-				BD2987BE2639F66200FC1D11 /* Range_Rover.jpg */,
 				BD2987BF2639F66200FC1D11 /* Guidomia.png */,
-				BD2987C02639F66200FC1D11 /* BMW_330i.jpg */,
-				BD2987C12639F66200FC1D11 /* Mercedez_benz_GLC.jpg */,
 				BD2987C22639F66200FC1D11 /* car_list.json */,
 				BD2987C32639F66200FC1D11 /* Mobile Practical Test 2021_2.pages */,
-				BD2987C42639F66200FC1D11 /* Tacoma.jpg */,
 			);
 			path = "Guidomia 2021_2";
 			sourceTree = "<group>";
@@ -175,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				BD2987D62639F86600FC1D11 /* Bundle+Extension.swift */,
+				BD1A6DD7263A086500BBA994 /* UIColor+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -261,17 +266,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD2987A42639F50600FC1D11 /* LaunchScreen.storyboard in Resources */,
-				BD2987C62639F66200FC1D11 /* Alpine_roadster.jpg in Resources */,
-				BD2987CD2639F66200FC1D11 /* Tacoma.jpg in Resources */,
-				BD2987A12639F50600FC1D11 /* Assets.xcassets in Resources */,
+				BD1A6E87263A0CBB00BBA994 /* Assets.xcassets in Resources */,
 				BD2987C52639F66200FC1D11 /* Code couleur.pdf in Resources */,
 				BD2987CC2639F66200FC1D11 /* Mobile Practical Test 2021_2.pages in Resources */,
 				BD2987CB2639F66200FC1D11 /* car_list.json in Resources */,
-				BD2987C72639F66200FC1D11 /* Range_Rover.jpg in Resources */,
+				BD1A6E8D263A136B00BBA994 /* Colors.xcassets in Resources */,
 				BD29879C2639F50300FC1D11 /* Main.storyboard in Resources */,
 				BD2987C82639F66200FC1D11 /* Guidomia.png in Resources */,
-				BD2987C92639F66200FC1D11 /* BMW_330i.jpg in Resources */,
-				BD2987CA2639F66200FC1D11 /* Mercedez_benz_GLC.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,11 +284,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD2987DD2639FAB000FC1D11 /* Vehicle.swift in Sources */,
+				BD1A6DD8263A086500BBA994 /* UIColor+Extension.swift in Sources */,
 				BD2987D32639F76200FC1D11 /* BellNavigationController.swift in Sources */,
 				BD2987E52639FD3300FC1D11 /* AppError.swift in Sources */,
 				BD2987D72639F86600FC1D11 /* Bundle+Extension.swift in Sources */,
 				BD2987B72639F5C500FC1D11 /* BaseViewController.swift in Sources */,
+				BD1A6DD5263A078B00BBA994 /* StarterProtocol.swift in Sources */,
 				BD29879F2639F50300FC1D11 /* Bell_Assignment_Test.xcdatamodeld in Sources */,
+				BD1A6DDC263A08E300BBA994 /* StarterFactory.swift in Sources */,
 				BD2987952639F50300FC1D11 /* AppDelegate.swift in Sources */,
 				BD2987972639F50300FC1D11 /* SceneDelegate.swift in Sources */,
 				BD2987B32639F59F00FC1D11 /* MainViewController.swift in Sources */,

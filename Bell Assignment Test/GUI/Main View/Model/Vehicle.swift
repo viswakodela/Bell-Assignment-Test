@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Vehicle: Decodable {
     let customerPrice: Int
@@ -15,4 +16,9 @@ struct Vehicle: Decodable {
     let prosList: [String]
     let consList: [String]
     let rating: Int
+    
+    var carImage: UIImage {
+        let imageName = make.replacingOccurrences(of: " ", with: "_") + "_" + model.replacingOccurrences(of: " ", with: "_")
+        return UIImage(named: imageName) ?? UIImage()
+    }
 }
