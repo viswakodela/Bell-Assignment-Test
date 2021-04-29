@@ -39,7 +39,7 @@ class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        //tableView.regularSetup()
+        tableView.regularSetup()
         configureTableView()
         addSubscriptions()
         fetchCarList()
@@ -53,7 +53,7 @@ class MainViewController: BaseViewController {
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
@@ -91,12 +91,8 @@ extension MainViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let vehicleModel = dataSource.itemIdentifier(for: indexPath)
         vehicleModel?.isExpanded.toggle()
-        if let snapShot = viewModel.updateItem(at: indexPath) {
-            dataSource.apply(snapShot)
+        if let snapShot = viewModel.updatedSnapshotForItem(at: indexPath) {
+            dataSource.apply(snapShot, animatingDifferences: true)
         }
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

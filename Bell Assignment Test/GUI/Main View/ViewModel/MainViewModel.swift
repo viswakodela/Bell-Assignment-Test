@@ -11,7 +11,7 @@ import UIKit
 protocol MainVM {
     var cellIdentifiers: [AnyObject.Type] { get }
     func fetchCarListData()
-    func updateItem(at indexPath: IndexPath) -> MainVM.Snapshot?
+    func updatedSnapshotForItem(at indexPath: IndexPath) -> MainVM.Snapshot?
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, VehicleCellModel>
 }
 
@@ -37,7 +37,7 @@ class MainViewModel: MainVM {
         }
     }
     
-    func updateItem(at indexPath: IndexPath) -> MainVM.Snapshot? {
+    func updatedSnapshotForItem(at indexPath: IndexPath) -> MainVM.Snapshot? {
         guard var snapshot = snapshot else { return nil }
         snapshot.reloadItems([carItems[indexPath.row]])
         return snapshot

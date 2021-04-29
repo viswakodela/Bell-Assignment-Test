@@ -9,6 +9,9 @@ import UIKit
 
 class VehicleTableViewCell: UITableViewCell {
     
+    // MARK:- Properties
+    private var bottomLabelBottomConstraint: NSLayoutConstraint?
+    
     // MARK:- Layout Objects
     let vehicleImageView: UIImageView = {
         let iv = UIImageView()
@@ -51,10 +54,20 @@ class VehicleTableViewCell: UITableViewCell {
         sv.axis = .horizontal
         sv.spacing = 10
         vehicleImageView.widthAnchor.constraint(equalTo: sv.widthAnchor, multiplier: 0.3).isActive = true
-        vehicleImageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        vehicleImageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         sv.backgroundColor = .lightGray
         sv.alignment = .center
         return sv
+    }()
+    
+    let bottomLabel: UILabel = {
+        let label = BaseLabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.adjustsFontForContentSizeCategory = true
+        label.numberOfLines = 0
+        return label
     }()
     
     let separatorView: UIView = {
@@ -79,16 +92,22 @@ class VehicleTableViewCell: UITableViewCell {
     private func setupLayout() {
         addSubview(mainStackView)
         addSubview(separatorView)
+        addSubview(bottomLabel)
         NSLayoutConstraint.activate([
             mainStackView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             mainStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             mainStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            mainStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
+            mainStackView.heightAnchor.constraint(equalToConstant: 120),
+            
+            bottomLabel.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: 4),
+            bottomLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            bottomLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            bottomLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
             
             separatorView.bottomAnchor.constraint(equalTo: bottomAnchor),
             separatorView.heightAnchor.constraint(equalToConstant: 4),
             separatorView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            separatorView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+            separatorView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
         ])
     }
 }
@@ -100,5 +119,7 @@ extension VehicleTableViewCell: TableViewCellProtocol {
         vehicleImageView.image = viewModel.vehicleImage
         vehicleMake.text = viewModel.title
         vehiclePrice.text = viewModel.priceLabel
+        bottomLabel.attributedText = viewModel.isExpanded ? viewModel.prosConsString : NSAttributedString()
+        self.layoutIfNeeded()
     }
 }
