@@ -43,11 +43,11 @@ class MainViewController: BaseViewController {
         configureTableView()
         addSubscriptions()
         fetchCarList()
-        tableView.tableFooterView = UIView()
     }
     
     // MARK:- Private Methods
     private func setupTableView() {
+        tableView.tableFooterView = UIView()
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -75,7 +75,13 @@ class MainViewController: BaseViewController {
                 self.viewModel.snapshot?.appendSections([.vehicles])
                 self.viewModel.snapshot?.appendItems(vehicles)
                 if let snapshot = self.viewModel.snapshot {
-                    dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
+                    let firstIndexPath = IndexPath(row: 0, section: 0)
+                    viewModel.currentSelectedIndexPath = firstIndexPath
+                    dataSource.apply(snapshot, animatingDifferences: animatingDifferences) {
+                        let vm = dataSource.itemIdentifier(for: firstIndexPath)
+                        vm?.isExpanded = true
+                        applySnapshot(for: firstIndexPath)
+                    }
                 }
             }
             .store(in: &subscription)
