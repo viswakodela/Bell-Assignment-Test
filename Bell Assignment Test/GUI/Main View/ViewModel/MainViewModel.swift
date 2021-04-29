@@ -21,6 +21,7 @@ class MainViewModel: MainVM {
     @Published
     private(set) var carItems = [VehicleCellModel]()
     var snapshot: Snapshot?
+    var currentSelectedIndexPath: IndexPath?
     
     var cellIdentifiers: [AnyObject.Type] {
         [VehicleTableViewCell.self]

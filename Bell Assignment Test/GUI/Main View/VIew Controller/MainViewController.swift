@@ -84,15 +84,29 @@ class MainViewController: BaseViewController {
     private func fetchCarList() {
         viewModel.fetchCarListData()
     }
+    
+    private func applySnapshot(for indexPath: IndexPath) {
+        if let snapShot = viewModel.updatedSnapshotForItem(at: indexPath) {
+            dataSource.apply(snapShot, animatingDifferences: true)
+        }
+    }
 }
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let vehicleModel = dataSource.itemIdentifier(for: indexPath)
-        vehicleModel?.isExpanded.toggle()
-        if let snapShot = viewModel.updatedSnapshotForItem(at: indexPath) {
-            dataSource.apply(snapShot, animatingDifferences: true)
+        
+        if let oldIndexPath = viewModel.currentSelectedIndexPath,
+           oldIndexPath != indexPath {
+            let oldViewModel = dataSource.itemIdentifier(for: oldIndexPath)
+            oldViewModel?.isExpanded = false
+            
+            applySnapshot(for: oldIndexPath)
         }
+        
+        vehicleModel?.isExpanded.toggle()
+        viewModel.currentSelectedIndexPath = indexPath
+        applySnapshot(for: indexPath)
     }
 }
