@@ -32,7 +32,8 @@ extension VehicleCellModelProtocol {
         let attributedString = NSMutableAttributedString()
         
         let prosHeading = NSAttributedString(string: "Pros:\n",
-                                             attributes: [.foregroundColor : UIColor.primaryTextColor])
+                                             attributes: [.foregroundColor : UIColor.primaryTextColor,
+                                                          .font : UIFont.systemFont(ofSize: 17, weight: .bold)])
         attributedString.append(prosHeading)
         
         let dot = NSAttributedString(string: "• ",
@@ -48,7 +49,8 @@ extension VehicleCellModelProtocol {
         }
         
         let consHeading = NSAttributedString(string: "\nCons:\n",
-                                             attributes: [.foregroundColor : UIColor.primaryTextColor])
+                                             attributes: [.foregroundColor : UIColor.primaryTextColor,
+                                                          .font : UIFont.systemFont(ofSize: 17, weight: .bold)])
         attributedString.append(consHeading)
         
         consList.forEach { (con) in
@@ -86,7 +88,7 @@ class VehicleCellModel: VehicleCellModelProtocol {
     }
     
     var priceLabel: String {
-        String(vehicle.customerPrice)
+        vehicle.customerPrice.roundedWithAbbreviations
     }
     
     var rating: Int {
