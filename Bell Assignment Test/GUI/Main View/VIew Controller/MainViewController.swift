@@ -35,10 +35,17 @@ class MainViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    let headerView: VehicleFilteringHeaderView = {
+        let hv = VehicleFilteringHeaderView(frame: .zero)
+        hv.translatesAutoresizingMaskIntoConstraints = false
+        return hv
+    }()
+    
     // MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupTableViewHeader()
         tableView.regularSetup()
         configureTableView()
         addSubscriptions()
@@ -55,6 +62,15 @@ class MainViewController: BaseViewController {
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    private func setupTableViewHeader() {
+        let vehicleHeader = VehicleFilteringHeaderView(frame: CGRect(x: 0,
+                                                                    y: 0,
+                                                                    width: view.frame.width,
+                                                                    height: 300))
+        tableView.tableHeaderView = vehicleHeader
+        vehicleHeader.update(with: viewModel.vehicleHeaderModel)
     }
     
     private func configureTableView() {
@@ -99,6 +115,7 @@ class MainViewController: BaseViewController {
 }
 
 extension MainViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let vehicleModel = dataSource.itemIdentifier(for: indexPath)

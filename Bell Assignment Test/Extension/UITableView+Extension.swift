@@ -11,7 +11,7 @@ extension UITableView {
     
     enum Constants {
         static let kDefaultCellHeight: CGFloat = 44
-        static let kDefaultHeaderHeight: CGFloat = 60
+        static let kDefaultHeaderHeight: CGFloat = 0
     }
 
     func regularSetup() {

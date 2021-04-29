@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BD09A7C2263B6C4400C0F0F6 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD09A7C1263B6C4400C0F0F6 /* Int+Extension.swift */; };
 		BD09A7C5263B723A00C0F0F6 /* VehicleFilteringHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD09A7C4263B723A00C0F0F6 /* VehicleFilteringHeaderView.swift */; };
+		BD09A7C8263B76A000C0F0F6 /* VehicleHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD09A7C7263B76A000C0F0F6 /* VehicleHeaderViewModel.swift */; };
 		BD1A6DD5263A078B00BBA994 /* StarterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A6DD4263A078B00BBA994 /* StarterProtocol.swift */; };
 		BD1A6DD8263A086500BBA994 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A6DD7263A086500BBA994 /* UIColor+Extension.swift */; };
 		BD1A6DDC263A08E300BBA994 /* StarterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A6DDB263A08E300BBA994 /* StarterFactory.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		BD09A7C1263B6C4400C0F0F6 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		BD09A7C4263B723A00C0F0F6 /* VehicleFilteringHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleFilteringHeaderView.swift; sourceTree = "<group>"; };
+		BD09A7C7263B76A000C0F0F6 /* VehicleHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleHeaderViewModel.swift; sourceTree = "<group>"; };
 		BD1A6DD4263A078B00BBA994 /* StarterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterProtocol.swift; sourceTree = "<group>"; };
 		BD1A6DD7263A086500BBA994 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		BD1A6DDB263A08E300BBA994 /* StarterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterFactory.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 			children = (
 				BD2987E02639FCDB00FC1D11 /* MainViewModel.swift */,
 				BD1A6E9C263A164D00BBA994 /* VehicleCellModel.swift */,
+				BD09A7C7263B76A000C0F0F6 /* VehicleHeaderViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				BD09A7C5263B723A00C0F0F6 /* VehicleFilteringHeaderView.swift in Sources */,
 				BD1A6E9A263A15E200BBA994 /* VehicleTableViewCell.swift in Sources */,
 				BD1A6DD5263A078B00BBA994 /* StarterProtocol.swift in Sources */,
+				BD09A7C8263B76A000C0F0F6 /* VehicleHeaderViewModel.swift in Sources */,
 				BD1A6E92263A159A00BBA994 /* TableViewCellProtocol.swift in Sources */,
 				BD29879F2639F50300FC1D11 /* Bell_Assignment_Test.xcdatamodeld in Sources */,
 				BD1A6DDC263A08E300BBA994 /* StarterFactory.swift in Sources */,

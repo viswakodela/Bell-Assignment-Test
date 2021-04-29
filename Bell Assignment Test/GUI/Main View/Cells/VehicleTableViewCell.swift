@@ -35,13 +35,13 @@ class VehicleTableViewCell: UITableViewCell {
         let label = BaseLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .primaryTextColor
-        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.font = UIFont.preferredFont(forTextStyle: .footnote)
         label.adjustsFontForContentSizeCategory = true
         return label
     }()
     
     lazy var childStackView: UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [vehicleMake, vehiclePrice, UIView()])
+        let sv = UIStackView(arrangedSubviews: [vehicleMake, vehiclePrice])
         sv.translatesAutoresizingMaskIntoConstraints = false
         sv.axis = .vertical
         sv.spacing = 6
@@ -54,7 +54,7 @@ class VehicleTableViewCell: UITableViewCell {
         sv.axis = .horizontal
         sv.spacing = 10
         vehicleImageView.widthAnchor.constraint(equalTo: sv.widthAnchor, multiplier: 0.3).isActive = true
-        vehicleImageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        vehicleImageView.heightAnchor.constraint(equalTo: sv.heightAnchor, multiplier: 0.8).isActive = true
         sv.backgroundColor = .lightGray
         sv.alignment = .center
         return sv

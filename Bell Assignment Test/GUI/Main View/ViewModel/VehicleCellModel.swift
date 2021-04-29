@@ -88,7 +88,7 @@ class VehicleCellModel: VehicleCellModelProtocol {
     }
     
     var priceLabel: String {
-        vehicle.customerPrice.roundedWithAbbreviations
+        "Price: \(vehicle.customerPrice.roundedWithAbbreviations)"
     }
     
     var rating: Int {
