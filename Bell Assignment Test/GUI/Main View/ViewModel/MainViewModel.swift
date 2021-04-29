@@ -9,16 +9,19 @@ import Combine
 import UIKit
 
 protocol MainVM {
-    var snapshotPublisher: AnyPublisher<NSDiffableDataSourceSnapshot<Section, VehicleCellModel>, Never> { get }
     var cellIdentifiers: [AnyObject.Type] { get }
     func fetchCarListData()
+    func updateItem(at indexPath: IndexPath) -> MainVM.Snapshot?
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, VehicleCellModel>
 }
 
 
 class MainViewModel: MainVM {
     
     @Published
-    private var carItems = [Vehicle]()
+    private(set) var carItems = [VehicleCellModel]()
+    var snapshot: Snapshot?
+    
     var cellIdentifiers: [AnyObject.Type] {
         [VehicleTableViewCell.self]
     }
@@ -29,22 +32,14 @@ class MainViewModel: MainVM {
             case .failure:
                 carItems = []
             case .success(let vehicles):
-                carItems = vehicles
+                carItems = vehicles.map { VehicleCellModel(vehicle: $0) }
             }
         }
     }
     
-    var snapshotPublisher: AnyPublisher<NSDiffableDataSourceSnapshot<Section, VehicleCellModel>, Never> {
-        $carItems
-            .receive(on: DispatchQueue.main)
-            .map { results in
-                var snapshot = NSDiffableDataSourceSnapshot<Section, VehicleCellModel>()
-                snapshot.appendSections([.vehicles])
-                snapshot.appendItems(results.map({ (vehile) in
-                    return VehicleCellModel(vehicle: vehile)
-                }))
-                return snapshot
-            }
-            .eraseToAnyPublisher()
+    func updateItem(at indexPath: IndexPath) -> MainVM.Snapshot? {
+        guard var snapshot = snapshot else { return nil }
+        snapshot.reloadItems([carItems[indexPath.row]])
+        return snapshot
     }
 }

@@ -20,13 +20,14 @@ class MainViewController: BaseViewController {
     }()
     
     // MARK:- Properties
-    private let viewModel: MainVM
-    private var diffableDatasource: UITableViewDiffableDataSource<Section, VehicleCellModel>!
+    private var subscription = Set<AnyCancellable>()
+    private let viewModel: MainViewModel
+    private var dataSource: UITableViewDiffableDataSource<Section, VehicleCellModel>!
     private var subscriptions = Set<AnyCancellable>()
     
     // MARK:- init
-    init(viewModel: MainViewModel) {
-        self.viewModel = viewModel
+    init(viewModel: MainVM) {
+        self.viewModel = viewModel as! MainViewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -60,19 +61,24 @@ class MainViewController: BaseViewController {
         viewModel.cellIdentifiers.forEach { (cellId) in
             tableView.register(cellId, forCellReuseIdentifier: "\(cellId)")
         }
-        diffableDatasource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { (tv, indexPath, result) -> UITableViewCell? in
+        dataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { (tv, indexPath, result) -> UITableViewCell? in
             let cell = self.tableView.dequeueReusableCell(withIdentifier: result.identifier)
             (cell as? TableViewCellProtocol)?.update(with: result)
             return cell
         })
     }
     
-    private func addSubscriptions() {
-        viewModel.snapshotPublisher
-            .sink { [unowned self] (snapshot) in
-                self.diffableDatasource.apply(snapshot, animatingDifferences: true)
+    private func addSubscriptions(animatingDifferences: Bool = true) {
+        viewModel.$carItems
+            .sink { [unowned self] (vehicles) in
+                self.viewModel.snapshot = MainVM.Snapshot()
+                self.viewModel.snapshot?.appendSections([.vehicles])
+                self.viewModel.snapshot?.appendItems(vehicles)
+                if let snapshot = self.viewModel.snapshot {
+                    dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
+                }
             }
-            .store(in: &subscriptions)
+            .store(in: &subscription)
     }
     
     private func fetchCarList() {
@@ -81,12 +87,13 @@ class MainViewController: BaseViewController {
 }
 
 extension MainViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let vehicleModel = dataSource.itemIdentifier(for: indexPath)
+        vehicleModel?.isExpanded.toggle()
+        if let snapShot = viewModel.updateItem(at: indexPath) {
+            dataSource.apply(snapShot)
+        }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
