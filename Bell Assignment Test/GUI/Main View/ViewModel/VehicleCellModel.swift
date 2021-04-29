@@ -15,6 +15,13 @@ protocol VehicleCellModelProtocol: TableViewCellModelProtocol {
     var title: String { get }
     var priceLabel: String { get }
     var rating: Int { get }
+    var backgroundColor: UIColor { get }
+}
+
+extension VehicleCellModelProtocol {
+    var backgroundColor: UIColor {
+        return UIColor.lightGray
+    }
 }
 
 class VehicleCellModel: VehicleCellModelProtocol {

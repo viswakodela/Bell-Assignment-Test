@@ -46,13 +46,22 @@ class VehicleTableViewCell: UITableViewCell {
     }()
     
     lazy var mainStackView: UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [vehicleImageView, childStackView])
+        let sv = UIStackView(arrangedSubviews: [UIView(), vehicleImageView, childStackView, UIView()])
         sv.translatesAutoresizingMaskIntoConstraints = false
         sv.axis = .horizontal
         sv.spacing = 10
         vehicleImageView.widthAnchor.constraint(equalTo: sv.widthAnchor, multiplier: 0.3).isActive = true
-        vehicleImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        vehicleImageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        sv.backgroundColor = .lightGray
+        sv.alignment = .center
         return sv
+    }()
+    
+    let separatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .separatorColor
+        return view
     }()
     
     // MARK:- init
@@ -68,11 +77,17 @@ class VehicleTableViewCell: UITableViewCell {
     // MARK:- Private Methods
     private func setupLayout() {
         addSubview(mainStackView)
+        addSubview(separatorView)
         NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            mainStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            mainStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            mainStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
+            mainStackView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            mainStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            mainStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            mainStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
+            
+            separatorView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            separatorView.heightAnchor.constraint(equalToConstant: 4),
+            separatorView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            separatorView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ])
     }
 }

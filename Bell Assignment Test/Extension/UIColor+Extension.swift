@@ -10,4 +10,6 @@ import UIKit
 extension UIColor {
     static let navBarTintColor: UIColor = UIColor(named: "navBarTintColor")!
     static let primaryTextColor: UIColor = UIColor(named: "primaryTextColor")!
+    static let lightGray: UIColor = UIColor(named: "lightGray")!
+    static let separatorColor: UIColor = UIColor(named: "separatorColor")!
 }

@@ -15,6 +15,7 @@ class MainViewController: BaseViewController {
         let tv = UITableView(frame: .zero, style: .plain)
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.delegate = self
+        tv.separatorStyle = .none
         return tv
     }()
     
@@ -37,7 +38,7 @@ class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        tableView.regularSetup()
+        //tableView.regularSetup()
         configureTableView()
         addSubscriptions()
         fetchCarList()
@@ -80,6 +81,10 @@ class MainViewController: BaseViewController {
 }
 
 extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
