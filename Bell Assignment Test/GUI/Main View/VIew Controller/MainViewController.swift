@@ -11,9 +11,10 @@ import Combine
 class MainViewController: BaseViewController {
     
     // MARK:- Layout Objects
-    private let tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tv = UITableView(frame: .zero, style: .plain)
         tv.translatesAutoresizingMaskIntoConstraints = false
+        tv.delegate = self
         return tv
     }()
     
@@ -60,6 +61,7 @@ class MainViewController: BaseViewController {
         }
         diffableDatasource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { (tv, indexPath, result) -> UITableViewCell? in
             let cell = self.tableView.dequeueReusableCell(withIdentifier: result.identifier)
+            (cell as? TableViewCellProtocol)?.update(with: result)
             return cell
         })
     }
@@ -74,5 +76,15 @@ class MainViewController: BaseViewController {
     
     private func fetchCarList() {
         viewModel.fetchCarListData()
+    }
+}
+
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
