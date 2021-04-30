@@ -9,6 +9,8 @@ import UIKit
 
 class VehicleFilteringHeaderView: UITableViewHeaderFooterView {
     
+    // MARK:- Properties
+    
     // MARK:- Layout Objects
     let vehicleImageView: UIImageView = {
         let iv = UIImageView()

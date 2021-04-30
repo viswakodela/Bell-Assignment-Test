@@ -16,6 +16,8 @@ protocol VehicleCellModelProtocol: TableViewCellModelProtocol {
     var title: String { get }
     var priceLabel: String { get }
     var rating: Int { get }
+    var vehicleMake: String { get }
+    var vehicleModel: String { get }
     var backgroundColor: UIColor { get }
 }
 
@@ -65,7 +67,7 @@ extension VehicleCellModelProtocol {
     }
 }
 
-class VehicleCellModel: VehicleCellModelProtocol {
+class VehicleCellModel: VehicleCellModelProtocol, ObservableObject {
     
     var uniqueId: UUID = UUID()
     
@@ -97,6 +99,14 @@ class VehicleCellModel: VehicleCellModelProtocol {
     
     var identifier: String {
         return String(describing: VehicleTableViewCell.self)
+    }
+    
+    var vehicleMake: String {
+        return vehicle.make
+    }
+    
+    var vehicleModel: String {
+        return vehicle.model
     }
     
     private let vehicle: Vehicle

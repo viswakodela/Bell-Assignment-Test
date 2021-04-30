@@ -9,6 +9,8 @@ import UIKit
 
 class FilterView: UIView {
     
+    var filterViewModel: FilteringViewModel?
+    
     // MARK:- Layout Objects
     let makeTextField: UITextField = {
         let tf = BellTextField(frame: .zero)

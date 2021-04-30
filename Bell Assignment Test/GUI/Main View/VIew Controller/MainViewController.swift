@@ -19,10 +19,13 @@ class MainViewController: BaseViewController {
         return tv
     }()
     
+    private var headerView: VehicleFilteringHeaderView!
+    
     // MARK:- Properties
     private var subscription = Set<AnyCancellable>()
     private let viewModel: MainViewModel
     private var dataSource: UITableViewDiffableDataSource<Section, VehicleCellModel>!
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, VehicleCellModel>
     private var subscriptions = Set<AnyCancellable>()
     
     // MARK:- init
@@ -34,12 +37,6 @@ class MainViewController: BaseViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    let headerView: VehicleFilteringHeaderView = {
-        let hv = VehicleFilteringHeaderView(frame: .zero)
-        hv.translatesAutoresizingMaskIntoConstraints = false
-        return hv
-    }()
     
     // MARK:- Lifecycle
     override func viewDidLoad() {
@@ -65,12 +62,14 @@ class MainViewController: BaseViewController {
     }
     
     private func setupTableViewHeader() {
-        let vehicleHeader = VehicleFilteringHeaderView(frame: CGRect(x: 0,
+        headerView = VehicleFilteringHeaderView(frame: CGRect(x: 0,
                                                                     y: 0,
                                                                     width: view.frame.width,
                                                                     height: 400))
-        tableView.tableHeaderView = vehicleHeader
-        vehicleHeader.update(with: viewModel.vehicleHeaderModel)
+        tableView.tableHeaderView = headerView
+        headerView.makeModelFilterView.makeTextField.addTarget(self, action: #selector(vehicleMakeTextChange), for: .editingChanged)
+        headerView.makeModelFilterView.modelTextField.addTarget(self, action: #selector(vehicleModelTextChange), for: .editingChanged)
+        headerView.update(with: viewModel.vehicleHeaderModel)
     }
     
     private func configureTableView() {
@@ -85,51 +84,75 @@ class MainViewController: BaseViewController {
     }
     
     private func addSubscriptions(animatingDifferences: Bool = true) {
-        viewModel.$carItems
-            .sink { [unowned self] (vehicles) in
-                self.viewModel.snapshot = MainVM.Snapshot()
-                self.viewModel.snapshot?.appendSections([.vehicles])
-                self.viewModel.snapshot?.appendItems(vehicles)
-                if let snapshot = self.viewModel.snapshot {
-                    let firstIndexPath = IndexPath(row: 0, section: 0)
-                    viewModel.currentSelectedIndexPath = firstIndexPath
-                    dataSource.apply(snapshot, animatingDifferences: animatingDifferences) {
-                        let vm = dataSource.itemIdentifier(for: firstIndexPath)
-                        vm?.isExpanded = true
-                        applySnapshot(for: firstIndexPath)
-                    }
-                }
+        
+        viewModel.combinedPublisher
+            .sink { [unowned self] filteredVehicles in
+                self.applySnapshot()
             }
             .store(in: &subscription)
     }
     
     private func fetchCarList() {
-        viewModel.fetchCarListData()
+        viewModel.fetchCarListData { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .failure:
+                // show error
+                break
+            case .success:
+                DispatchQueue.main.async { [self] in
+                    let firstIndexPath = IndexPath(row: 0, section: 0)
+                    self.viewModel.currentSelectedIndexPath = firstIndexPath
+                    let vm = self.dataSource.itemIdentifier(for: firstIndexPath)
+                    vm?.isExpanded = true
+                    self.applySnapshot()
+                }
+            }
+        }
+    }
+    
+    
+    private func applySnapshot() {
+        var snapshot = Snapshot()
+        snapshot.appendSections([.vehicles])
+        snapshot.appendItems(viewModel.carItems)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
     
     private func applySnapshot(for indexPath: IndexPath) {
-        if let snapShot = viewModel.updatedSnapshotForItem(at: indexPath) {
-            dataSource.apply(snapShot, animatingDifferences: true)
+        var snapshot = dataSource.snapshot()
+        if !viewModel.carItems.isEmpty {
+            snapshot.reloadItems([viewModel.carItems[indexPath.row]])
+            dataSource.apply(snapshot)
         }
+    }
+    
+    @objc
+    func vehicleMakeTextChange(sender: AnyObject) {
+        viewModel.vehicleMakeText = (sender as? UITextField)?.text ?? ""
+    }
+    
+    @objc
+    func vehicleModelTextChange(sender: AnyObject) {
+        viewModel.vehicleModelText = (sender as? UITextField)?.text ?? ""
     }
 }
 
 extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         let vehicleModel = dataSource.itemIdentifier(for: indexPath)
         
-        if let oldIndexPath = viewModel.currentSelectedIndexPath,
-           oldIndexPath != indexPath {
-            let oldViewModel = dataSource.itemIdentifier(for: oldIndexPath)
-            oldViewModel?.isExpanded = false
-            
-            applySnapshot(for: oldIndexPath)
-        }
+//        if let oldIndexPath = viewModel.currentSelectedIndexPath,
+//           oldIndexPath != indexPath {
+//            let oldViewModel = dataSource.itemIdentifier(for: oldIndexPath)
+//            oldViewModel?.isExpanded = false
+//            
+//            applySnapshot(for: oldIndexPath)
+//        }
         
-        vehicleModel?.isExpanded.toggle()
         viewModel.currentSelectedIndexPath = indexPath
+        vehicleModel?.isExpanded.toggle()
         applySnapshot(for: indexPath)
     }
 }

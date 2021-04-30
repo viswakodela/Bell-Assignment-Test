@@ -10,38 +10,55 @@ import UIKit
 
 protocol MainVM {
     var cellIdentifiers: [AnyObject.Type] { get }
-    func fetchCarListData()
-    func updatedSnapshotForItem(at indexPath: IndexPath) -> MainVM.Snapshot?
-    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, VehicleCellModel>
+    func fetchCarListData(completion: (Result<(), AppError>) -> Void)
 }
 
 
 class MainViewModel: MainVM {
     
-    @Published
     private(set) var carItems = [VehicleCellModel]()
-    var snapshot: Snapshot?
+    private var nonFilteredCarItems = [VehicleCellModel]()
     var currentSelectedIndexPath: IndexPath?
-    var vehicleHeaderModel = VehicleHeaderViewModel()
+    lazy var vehicleHeaderModel = VehicleHeaderViewModel(vehicles: carItems)
+    
+    @Published
+    var vehicleMakeText: String = ""
+    
+    @Published
+    var vehicleModelText: String = ""
+    
+    var combinedPublisher: AnyPublisher<[VehicleCellModel], Never> {
+        return Publishers.CombineLatest($vehicleMakeText, $vehicleModelText)
+            .receive(on: RunLoop.main)
+            .map { [self] make, model in
+                if !make.isEmpty || !model.isEmpty {
+                    let filteredArray = carItems.filter { (vehicle) -> Bool in
+                        vehicle.vehicleMake.lowercased().contains(make.lowercased()) || vehicle.vehicleModel.lowercased().contains(model.lowercased())
+                    }
+                    carItems = filteredArray
+                } else {
+                    carItems = nonFilteredCarItems
+                }
+                return carItems
+            }
+            .eraseToAnyPublisher()
+    }
     
     var cellIdentifiers: [AnyObject.Type] {
         [VehicleTableViewCell.self]
     }
     
-    func fetchCarListData() {
+    func fetchCarListData(completion: (Result<Void, AppError>) -> Void) {
         Bundle.main.carListData { (result) in
             switch result {
             case .failure:
                 carItems = []
+                completion(.failure(AppError.serialization))
             case .success(let vehicles):
                 carItems = vehicles.map { VehicleCellModel(vehicle: $0) }
+                nonFilteredCarItems = carItems
+                completion(.success(()))
             }
         }
-    }
-    
-    func updatedSnapshotForItem(at indexPath: IndexPath) -> MainVM.Snapshot? {
-        guard var snapshot = snapshot else { return nil }
-        snapshot.reloadItems([carItems[indexPath.row]])
-        return snapshot
     }
 }
