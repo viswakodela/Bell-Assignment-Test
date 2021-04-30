@@ -27,12 +27,4 @@ extension VehicleViewModelProtocol {
     }
 }
 
-class VehicleHeaderViewModel: VehicleViewModelProtocol {
-
-    let vehicles: [VehicleCellModel]
-    lazy var filterViewModel = VehicleFilterViewModel(vehicleList: vehicles)
-    
-    init(vehicles: [VehicleCellModel]) {
-        self.vehicles = vehicles
-    }
-}
+class VehicleHeaderViewModel: VehicleViewModelProtocol {}

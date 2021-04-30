@@ -15,20 +15,24 @@ class FilterView: UIView {
     let makeTextField: UITextField = {
         let tf = BellTextField(frame: .zero)
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.placeholder = "Any Make"
+        tf.attributedPlaceholder = NSAttributedString(string: "Any Model",
+                                                      attributes: [.foregroundColor: UIColor.darkGray])
         tf.backgroundColor = .white
         tf.layer.cornerRadius = 8
         tf.clipsToBounds = true
+        tf.textColor = .black
         return tf
     }()
     
     let modelTextField: UITextField = {
         let tf = BellTextField(frame: .zero)
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.placeholder = "Any Model"
         tf.backgroundColor = .white
         tf.layer.cornerRadius = 8
         tf.clipsToBounds = true
+        tf.attributedPlaceholder = NSAttributedString(string: "Any Model",
+                                                      attributes: [.foregroundColor: UIColor.darkGray])
+        tf.textColor = .black
         return tf
     }()
     

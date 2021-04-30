@@ -63,6 +63,7 @@ class VehicleFilteringHeaderView: UITableViewHeaderFooterView {
     }
     
     private func setupLayout() {
+        backgroundColor = .white
         addSubview(vehicleImageView)
         addSubview(makeModelFilterView)
         vehicleImageView.addSubview(labelsStackView)

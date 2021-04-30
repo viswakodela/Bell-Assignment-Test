@@ -16,11 +16,13 @@ protocol MainVM {
 
 class MainViewModel: MainVM {
     
+    // MARK:- Properties
     private(set) var carItems = [VehicleCellModel]()
     private var nonFilteredCarItems = [VehicleCellModel]()
     var currentSelectedIndexPath: IndexPath?
-    lazy var vehicleHeaderModel = VehicleHeaderViewModel(vehicles: carItems)
+    let vehicleHeaderModel = VehicleHeaderViewModel()
     
+    // MARK:- Combine Properties
     @Published
     var vehicleMakeText: String = ""
     
@@ -48,6 +50,7 @@ class MainViewModel: MainVM {
         [VehicleTableViewCell.self]
     }
     
+    // MARK:- Helpers
     func fetchCarListData(completion: (Result<Void, AppError>) -> Void) {
         Bundle.main.carListData { (result) in
             switch result {

@@ -90,6 +90,7 @@ class VehicleTableViewCell: UITableViewCell {
     
     // MARK:- Private Methods
     private func setupLayout() {
+        backgroundColor = .white
         addSubview(mainStackView)
         addSubview(separatorView)
         addSubview(bottomLabel)

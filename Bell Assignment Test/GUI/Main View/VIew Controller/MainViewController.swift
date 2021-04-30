@@ -51,7 +51,9 @@ class MainViewController: BaseViewController {
     
     // MARK:- Private Methods
     private func setupTableView() {
+        tableView.backgroundColor = .white
         tableView.tableFooterView = UIView()
+        tableView.keyboardDismissMode = .onDrag
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -86,7 +88,12 @@ class MainViewController: BaseViewController {
     private func addSubscriptions(animatingDifferences: Bool = true) {
         
         viewModel.combinedPublisher
+            .debounce(for: 0.5, scheduler: RunLoop.main)
             .sink { [unowned self] filteredVehicles in
+                if let oldIndexPath = viewModel.currentSelectedIndexPath {
+                    let vm = dataSource.itemIdentifier(for: oldIndexPath)
+                    vm?.isExpanded = false
+                }
                 self.applySnapshot()
             }
             .store(in: &subscription)
@@ -101,29 +108,30 @@ class MainViewController: BaseViewController {
                 break
             case .success:
                 DispatchQueue.main.async { [self] in
+                    self.applySnapshot(animateDifferences: false)
                     let firstIndexPath = IndexPath(row: 0, section: 0)
-                    self.viewModel.currentSelectedIndexPath = firstIndexPath
                     let vm = self.dataSource.itemIdentifier(for: firstIndexPath)
                     vm?.isExpanded = true
-                    self.applySnapshot()
+                    self.viewModel.currentSelectedIndexPath = firstIndexPath
+                    self.applySnapshot(for: firstIndexPath, animateDifferences: false)
                 }
             }
         }
     }
     
     
-    private func applySnapshot() {
+    private func applySnapshot(animateDifferences: Bool = true) {
         var snapshot = Snapshot()
         snapshot.appendSections([.vehicles])
         snapshot.appendItems(viewModel.carItems)
-        dataSource.apply(snapshot, animatingDifferences: true)
+        dataSource.apply(snapshot, animatingDifferences: animateDifferences)
     }
     
-    private func applySnapshot(for indexPath: IndexPath) {
+    private func applySnapshot(for indexPath: IndexPath, animateDifferences: Bool = true) {
         var snapshot = dataSource.snapshot()
         if !viewModel.carItems.isEmpty {
             snapshot.reloadItems([viewModel.carItems[indexPath.row]])
-            dataSource.apply(snapshot)
+            dataSource.apply(snapshot, animatingDifferences: animateDifferences)
         }
     }
     
@@ -143,13 +151,12 @@ extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vehicleModel = dataSource.itemIdentifier(for: indexPath)
         
-//        if let oldIndexPath = viewModel.currentSelectedIndexPath,
-//           oldIndexPath != indexPath {
-//            let oldViewModel = dataSource.itemIdentifier(for: oldIndexPath)
-//            oldViewModel?.isExpanded = false
-//            
-//            applySnapshot(for: oldIndexPath)
-//        }
+        if let oldIndexPath = viewModel.currentSelectedIndexPath,
+           oldIndexPath != indexPath {
+            let oldViewModel = dataSource.itemIdentifier(for: oldIndexPath)
+            oldViewModel?.isExpanded = false
+            applySnapshot(for: oldIndexPath)
+        }
         
         viewModel.currentSelectedIndexPath = indexPath
         vehicleModel?.isExpanded.toggle()
