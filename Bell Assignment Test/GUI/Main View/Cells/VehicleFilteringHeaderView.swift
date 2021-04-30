@@ -43,6 +43,14 @@ class VehicleFilteringHeaderView: UITableViewHeaderFooterView {
         return sv
     }()
     
+    let makeModelFilterView: FilterView = {
+        let fv = FilterView(frame: .zero)
+        fv.translatesAutoresizingMaskIntoConstraints = false
+        fv.layer.cornerRadius = 12
+        fv.clipsToBounds = true
+        return fv
+    }()
+    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setupLayout()
@@ -54,17 +62,23 @@ class VehicleFilteringHeaderView: UITableViewHeaderFooterView {
     
     private func setupLayout() {
         addSubview(vehicleImageView)
+        addSubview(makeModelFilterView)
         vehicleImageView.addSubview(labelsStackView)
         NSLayoutConstraint.activate([
             vehicleImageView.topAnchor.constraint(equalTo: topAnchor),
             vehicleImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             vehicleImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            vehicleImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.65),
+            vehicleImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.6),
             
             labelsStackView.bottomAnchor.constraint(equalTo: vehicleImageView.bottomAnchor, constant: -20),
             labelsStackView.leadingAnchor.constraint(equalTo: vehicleImageView.leadingAnchor, constant: 16),
             labelsStackView.trailingAnchor.constraint(equalTo: vehicleImageView.trailingAnchor, constant: -16),
-            labelsStackView.heightAnchor.constraint(lessThanOrEqualTo: vehicleImageView.heightAnchor, multiplier: 0.5)
+            labelsStackView.heightAnchor.constraint(lessThanOrEqualTo: vehicleImageView.heightAnchor, multiplier: 0.5),
+            
+            makeModelFilterView.topAnchor.constraint(equalTo: vehicleImageView.bottomAnchor, constant: 16),
+            makeModelFilterView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            makeModelFilterView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            makeModelFilterView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
         ])
     }
 }

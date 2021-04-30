@@ -119,7 +119,12 @@ extension VehicleTableViewCell: TableViewCellProtocol {
         vehicleImageView.image = viewModel.vehicleImage
         vehicleMake.text = viewModel.title
         vehiclePrice.text = viewModel.priceLabel
-        bottomLabel.attributedText = viewModel.isExpanded ? viewModel.prosConsString : NSAttributedString()
-        self.layoutIfNeeded()
+        UIView.transition(with: bottomLabel,
+                          duration: 0.25,
+                          options: .transitionCrossDissolve) {
+            self.bottomLabel.attributedText = viewModel.isExpanded ? viewModel.prosConsString : NSAttributedString()
+            self.layoutIfNeeded()
+        } completion: { _ in }
+
     }
 }

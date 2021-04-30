@@ -12,4 +12,5 @@ extension UIColor {
     static let primaryTextColor: UIColor = UIColor(named: "primaryTextColor")!
     static let lightGray: UIColor = UIColor(named: "lightGray")!
     static let separatorColor: UIColor = UIColor(named: "separatorColor")!
+    static let darkGray: UIColor = UIColor(named: "darkGray")!
 }

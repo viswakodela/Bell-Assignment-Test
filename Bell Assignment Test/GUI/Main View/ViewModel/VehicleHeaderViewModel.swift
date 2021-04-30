@@ -27,6 +27,4 @@ extension VehicleViewModelProtocol {
     }
 }
 
-class VehicleHeaderViewModel: VehicleViewModelProtocol {
-    
-}
+class VehicleHeaderViewModel: VehicleViewModelProtocol {}

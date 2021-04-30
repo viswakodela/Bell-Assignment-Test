@@ -68,7 +68,7 @@ class MainViewController: BaseViewController {
         let vehicleHeader = VehicleFilteringHeaderView(frame: CGRect(x: 0,
                                                                     y: 0,
                                                                     width: view.frame.width,
-                                                                    height: 300))
+                                                                    height: 400))
         tableView.tableHeaderView = vehicleHeader
         vehicleHeader.update(with: viewModel.vehicleHeaderModel)
     }

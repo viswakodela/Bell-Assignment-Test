@@ -34,6 +34,8 @@
 		BD2987DD2639FAB000FC1D11 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2987DC2639FAB000FC1D11 /* Vehicle.swift */; };
 		BD2987E12639FCDB00FC1D11 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2987E02639FCDB00FC1D11 /* MainViewModel.swift */; };
 		BD2987E52639FD3300FC1D11 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2987E42639FD3300FC1D11 /* AppError.swift */; };
+		BD711713263C6D6E00BAFEBB /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD711712263C6D6E00BAFEBB /* FilterView.swift */; };
+		BD711716263C73FB00BAFEBB /* BellTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD711715263C73FB00BAFEBB /* BellTextField.swift */; };
 		BD7C47BF263A1AA3009D6422 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C47BE263A1AA3009D6422 /* UITableView+Extension.swift */; };
 		BD7C47C4263A2A42009D6422 /* BaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C47C3263A2A42009D6422 /* BaseLabel.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +70,8 @@
 		BD2987DC2639FAB000FC1D11 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		BD2987E02639FCDB00FC1D11 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		BD2987E42639FD3300FC1D11 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		BD711712263C6D6E00BAFEBB /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		BD711715263C73FB00BAFEBB /* BellTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BellTextField.swift; sourceTree = "<group>"; };
 		BD7C47BE263A1AA3009D6422 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		BD7C47C3263A2A42009D6422 /* BaseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,6 +198,7 @@
 		BD2987B52639F5B900FC1D11 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				BD711711263C6D5B00BAFEBB /* Views */,
 				BD1A6E8F263A158200BBA994 /* Base */,
 				BD1A6E90263A158800BBA994 /* TableViewCellProtocol */,
 			);
@@ -254,6 +259,15 @@
 				BD2987E42639FD3300FC1D11 /* AppError.swift */,
 			);
 			path = "App Error";
+			sourceTree = "<group>";
+		};
+		BD711711263C6D5B00BAFEBB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BD711712263C6D6E00BAFEBB /* FilterView.swift */,
+				BD711715263C73FB00BAFEBB /* BellTextField.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD711713263C6D6E00BAFEBB /* FilterView.swift in Sources */,
 				BD09A7C2263B6C4400C0F0F6 /* Int+Extension.swift in Sources */,
 				BD2987DD2639FAB000FC1D11 /* Vehicle.swift in Sources */,
 				BD7C47C4263A2A42009D6422 /* BaseLabel.swift in Sources */,
@@ -343,6 +358,7 @@
 				BD2987B72639F5C500FC1D11 /* BaseViewController.swift in Sources */,
 				BD09A7C5263B723A00C0F0F6 /* VehicleFilteringHeaderView.swift in Sources */,
 				BD1A6E9A263A15E200BBA994 /* VehicleTableViewCell.swift in Sources */,
+				BD711716263C73FB00BAFEBB /* BellTextField.swift in Sources */,
 				BD1A6DD5263A078B00BBA994 /* StarterProtocol.swift in Sources */,
 				BD09A7C8263B76A000C0F0F6 /* VehicleHeaderViewModel.swift in Sources */,
 				BD1A6E92263A159A00BBA994 /* TableViewCellProtocol.swift in Sources */,
