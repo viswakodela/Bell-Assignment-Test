@@ -8,6 +8,17 @@
 import UIKit
 import Combine
 
+
+/*
+ In this Project I have implemented the Filtering as follows
+    • User can filter the vehicle based on the Make or the Model.
+      This filtering logic may not apply if the user tries to filter with both Make and Model.
+    • I do not have time to implement the Rating View as I want to depend on 3rd party library https://github.com/evgenyneu/Cosmos
+      and I feel it is not worth spending more time than I have to, to get to the next round of interview.
+    • I have also chosen not to work on Bonus level as I had to spend more time. How ever ask me how I would implement this in the next round of interview if I make it that far.
+ */
+
+
 class MainViewController: BaseViewController {
     
     // MARK:- Layout Objects

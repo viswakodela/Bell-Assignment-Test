@@ -15,7 +15,7 @@ class FilterView: UIView {
     let makeTextField: UITextField = {
         let tf = BellTextField(frame: .zero)
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.attributedPlaceholder = NSAttributedString(string: "Any Model",
+        tf.attributedPlaceholder = NSAttributedString(string: "Any Make",
                                                       attributes: [.foregroundColor: UIColor.darkGray])
         tf.backgroundColor = .white
         tf.layer.cornerRadius = 8
