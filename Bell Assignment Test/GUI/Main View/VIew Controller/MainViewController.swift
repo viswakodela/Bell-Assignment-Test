@@ -121,10 +121,11 @@ class MainViewController: BaseViewController {
                 DispatchQueue.main.async { [self] in
                     self.applySnapshot(animateDifferences: false)
                     let firstIndexPath = IndexPath(row: 0, section: 0)
-                    let vm = self.dataSource.itemIdentifier(for: firstIndexPath)
-                    vm?.isExpanded = true
-                    self.viewModel.currentSelectedIndexPath = firstIndexPath
-                    self.applySnapshot(for: firstIndexPath, animateDifferences: false)
+                    if let vm = self.dataSource.itemIdentifier(for: firstIndexPath) {
+                        vm.isExpanded = true
+                        self.viewModel.currentSelectedIndexPath = firstIndexPath
+                        self.applySnapshot(for: vm, animateDifferences: false)
+                    }
                 }
             }
         }
@@ -138,10 +139,10 @@ class MainViewController: BaseViewController {
         dataSource.apply(snapshot, animatingDifferences: animateDifferences)
     }
     
-    private func applySnapshot(for indexPath: IndexPath, animateDifferences: Bool = true) {
+    private func applySnapshot(for indexPath: VehicleCellModel, animateDifferences: Bool = true) {
         var snapshot = dataSource.snapshot()
         if !viewModel.carItems.isEmpty {
-            snapshot.reloadItems([viewModel.carItems[indexPath.row]])
+            snapshot.reloadItems([indexPath])
             dataSource.apply(snapshot, animatingDifferences: animateDifferences)
         }
     }
@@ -164,13 +165,14 @@ extension MainViewController: UITableViewDelegate {
         
         if let oldIndexPath = viewModel.currentSelectedIndexPath,
            oldIndexPath != indexPath {
-            let oldViewModel = dataSource.itemIdentifier(for: oldIndexPath)
-            oldViewModel?.isExpanded = false
-            applySnapshot(for: oldIndexPath)
+            if let oldViewModel = dataSource.itemIdentifier(for: oldIndexPath) {
+                oldViewModel.isExpanded = false
+                applySnapshot(for: oldViewModel)
+            }
         }
         
         viewModel.currentSelectedIndexPath = indexPath
         vehicleModel?.isExpanded.toggle()
-        applySnapshot(for: indexPath)
+        applySnapshot(for: vehicleModel!)
     }
 }
